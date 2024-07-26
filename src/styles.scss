@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+html, body { height: 100vh; overflow-y: hidden;}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+button {
+    height: 3em;
+    width: 11em;
+    background: lightblue;
+    border: 1px solid blue;
+    border-radius: 16px;
+}
