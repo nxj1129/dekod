@@ -1,10 +1,14 @@
 <div class="sidebar">
   <div class="navigation">
     <div class="button-container">
-      <button (click)="navigate('')">Prikaz podataka</button>
+      <button (click)="navigate('')" [class.active]="isActive('')">
+        Prikaz podataka
+      </button>
     </div>
     <div class="button-container">
-      <button (click)="navigate('second')">Unos podataka</button>
+      <button (click)="navigate('second')" [class.active]="isActive('second')">
+        Unos podataka
+      </button>
     </div>
   </div>
 </div>

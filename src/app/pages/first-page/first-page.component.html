@@ -1,9 +1,71 @@
 <div class="container">
   <app-sidebar></app-sidebar>
-
   <div class="content">
-    <h1>Prikaz podataka</h1>
+    <div class="table-container">
+      <h1>Prikaz podataka</h1>
 
-    
+      <div class="filters-container">
+        <input
+          type="text"
+          [(ngModel)]="nameFilter"
+          (ngModelChange)="filterByFirstAndLastName()"
+          placeholder="Filter by name"
+        />
+        <input
+          type="text"
+          [(ngModel)]="jobTitleFilter"
+          (ngModelChange)="filterByJobTitle()"
+          placeholder="Filter by job title"
+        />
+      </div>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th (click)="sortData('firstName')">
+                First name
+                <span *ngIf="sortColumn === 'firstName'">
+                  {{ sortDirection === "asc" ? "▲" : "▼" }}
+                </span>
+              </th>
+              <th (click)="sortData('lastName')">
+                Last name
+                <span *ngIf="sortColumn === 'lastName'">
+                  {{ sortDirection === "asc" ? "▲" : "▼" }}
+                </span>
+              </th>
+              <th (click)="sortData('jobTitle')">
+                Job title
+                <span *ngIf="sortColumn === 'jobTitle'">
+                  {{ sortDirection === "asc" ? "▲" : "▼" }}
+                </span>
+              </th>
+              <th>Date of Birth</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of displayedUsers">
+              <td>{{ user.id }}</td>
+              <td>{{ user.firstName }}</td>
+              <td>{{ user.lastName }}</td>
+              <td>{{ user.jobTitle }}</td>
+              <td>{{ user.dateOfBirth | date : "dd.MM.yyyy" }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pagination">
+        <button (click)="previousPage()" [disabled]="currentPage === 1">
+          Previous
+        </button>
+        <span>Page {{ currentPage }} of {{ totalPages }}</span>
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages">
+          Next
+        </button>
+      </div>
+    </div>
   </div>
 </div>

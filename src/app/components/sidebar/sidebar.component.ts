@@ -18,4 +18,8 @@ export class SidebarComponent {
     await this.router.navigateByUrl(route);
   }
 
+  isActive(route: string): boolean {
+    return this.router.url === '/' + route;
+  }
+
 }
